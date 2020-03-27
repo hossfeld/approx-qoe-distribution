@@ -4,6 +4,10 @@ In the context of QoE management, network and service providers commonly rely on
 
 ## Python Script: Approximation of the QoE distribution with a Beta distribution
 A basic script is provided which approximates a QoE distribution with a Beta distribution for given MOS and SOS parameter. In addition an example script is provided to illustrate the usage of the basic functions.
+* `approxQoEdist.py`: Python module implementing all functions. A  detailed description can be found at [help_approxQoEdist.md](https://github.com/hossfeld/approx-qoe-distribution/help_approxQoEdist.md)
+* `exampleApproxQoEdist.py`: a simple python script illustrating the usage of the module which includes two data csv files
+  * `exampleDataFrame.csv`: csv file containing subjective data to be read as Panda DataFrame 
+  * `exampleArray.csv`: csv file containing subjective data to be read as Numpy array
 
 ## Investigators
 The investigators in this research are
