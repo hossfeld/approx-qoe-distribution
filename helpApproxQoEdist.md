@@ -1,5 +1,5 @@
 
-# approxQoEdist
+# Python Module `approxQoEdist`
 
 A script is provided which approximates a QoE distribution with a
 Beta distribution for given MOS and SOS parameter. More details on the
