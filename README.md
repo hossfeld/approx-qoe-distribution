@@ -4,17 +4,17 @@ In the context of QoE management, network and service providers commonly rely on
 
 ## Python Script: Approximation of the QoE distribution with a Beta distribution
 A basic script is provided which approximates a QoE distribution with a Beta distribution for given MOS and SOS parameter. In addition an example script is provided to illustrate the usage of the basic functions.
-* `approxQoEdist.py`: Python module implementing all functions. A  detailed description can be found at [help_approxQoEdist.md](https://github.com/hossfeld/approx-qoe-distribution/blob/master/helpApproxQoEdist.md)
-* `exampleApproxQoEdist.py`: a simple python script illustrating the usage of the module which includes two data csv files
+* [`approxQoEdist.py`](https://github.com/hossfeld/approx-qoe-distribution/blob/master/scripts/approxQoEdist.py): Python module implementing all functions. A  detailed description can be found at [help_approxQoEdist.md](https://github.com/hossfeld/approx-qoe-distribution/blob/master/helpApproxQoEdist.md)
+* [`exampleApproxQoEdist.py`](https://github.com/hossfeld/approx-qoe-distribution/blob/master/scripts/exampleApproxQoEdist.py): a simple python script illustrating the usage of the module which includes two data csv files
   * `exampleDataFrame.csv`: csv file containing subjective data to be read as Panda DataFrame 
   * `exampleArray.csv`: csv file containing subjective data to be read as Numpy array
 
 ## Investigators
 The investigators in this research are
 * Tobias Hoßfeld (tobias.hossfeld@uni-wuerzburg.de), Professor and head of [Chair of Communication Networks, University of Würzburg](http://www.comnet.informatik.uni-wuerzburg.de/)
-* Poul E. Heegaard
-* Martin Varela
-* Lea Skorin-Kapov
+* Poul E. Heegaard (poul.heegaard@ntnu.no), Professor and Head of the Networking Research Group, [NTNU Department of Information Security and Communication Technology](http://www.ntnu.edu/employees/poul.heegaard)
+* Martín Varela (martin@varela.fi), QoE guy, https://martin.varela.fi/
+* Lea Skorin-Kapov (lea.skorin-kapov@fer.hr), Associate professor and head of the Multimedia Quality of Experience Research Lab at the [Faculty of Electrical Engineering and Computing, University of Zagreb](https://www.fer.unizg.hr/)
 * Markus Fiedler (markus.fiedler@bth.se), Professor and responsible for the area of media technology at [Blekinge Institute of Technology](http://www.bth.se/)
 
 ## Copyright Notice
