@@ -11,7 +11,7 @@ The investigators in this research are
 * Poul E. Heegaard
 * Martin Varela
 * Lea Skorin-Kapov
-* Markus Fiedler
+* Markus Fiedler (markus.fiedler@bth.se), Professor and responsible for the area of media technology at [Blekinge Institute of Technology](http://www.bth.se/)
 
 ## Copyright Notice
 This tool is published under the license: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
