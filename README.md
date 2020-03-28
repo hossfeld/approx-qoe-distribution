@@ -9,6 +9,7 @@ A basic script is provided which approximates a QoE distribution with a Beta dis
   * `exampleDataFrame.csv`: csv file containing subjective data to be read as Panda DataFrame 
   * `exampleArray.csv`: csv file containing subjective data to be read as Numpy array
 * [`exampleQoSMeasurementsToQoEdist.py`](https://github.com/hossfeld/approx-qoe-distribution/blob/master/scripts/exampleQoSMeasurementsToQoEdist.py): a simple python script showing how to derive QoEdistribution based on QoS measurements in a system; furthermore, the QoE metrics MOS, GoB and PoW in the system are computed. 
+* [`exampleQoSMeasurementsToQoEdist.ipynb`](https://github.com/hossfeld/approx-qoe-distribution/blob/master/scripts/exampleQoSMeasurementsToQoEdist.ipynb): Jupyter notebook showing how to derive QoEdistribution based on QoS measurements in a system; furthermore, the QoE metrics MOS, GoB and PoW in the system are computed. 
 
 ## Investigators
 The investigators in this research are
