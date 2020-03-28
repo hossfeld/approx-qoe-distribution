@@ -55,18 +55,18 @@ plt.ylabel('CDF')
 # In 2019 Eleventh Int. Conf. on Quality of Multimedia Experience (QoMEX) (pp. 1-6). IEEE.
 
 mos_vals = f(qos)
-print(f'Expected system QoE: E[Q]={mos_vals.mean():.2f}')
+print(f'Expected system QoE: E[Q]={(pk*xk).sum():.2f} vs. E[f(qos)]={mos_vals.mean():.2f}')
 plt.plot([mos_vals.mean()]*2, [0, 1], 'k--', label=f'MOS={mos_vals.mean():.2f}')
 plt.text(mos_vals.mean(),1, 'MOS')
 plt.gca().tick_params(right=True, top=True, labeltop=True)
 
 pow_vals = np.array([app.getPoW(mos) for mos in f(qos)])
-print(f'Poor or worse ratio in the system: PoW[Q]={pk[:2].sum():.2f} = E[w(qos)]={pow_vals.mean():.2f}')
+print(f'Poor or worse ratio in the system: PoW[Q]={pk[:2].sum():.2f} vs. E[w(qos)]={pow_vals.mean():.2f}')
 plt.plot([0.5,5.5], [pow_vals.mean()]*2, 'r--', label=f'PoW={pow_vals.mean():.2f}')
 plt.fill_between([0.5,5.5], 0, [pow_vals.mean()]*2, color='r', alpha=0.5, zorder=-1, hatch='--')
 
 gob_vals = np.array([app.getGoB(mos) for mos in f(qos)])
-print(f'Good or better ratio in the system: GoB[Q]={pk[-2:].sum():.2f} = E[g(qos)]={gob_vals.mean():.2f}')
+print(f'Good or better ratio in the system: GoB[Q]={pk[-2:].sum():.2f} vs. E[g(qos)]={gob_vals.mean():.2f}')
 plt.plot([0.5,5.5], [1-gob_vals.mean()]*2, 'g--', label=f'GoB={gob_vals.mean():.2f}')
 plt.fill_between([0.5,5.5], [1-gob_vals.mean()]*2, 1, color='g', alpha=0.5, zorder=-1, hatch='--')
 
