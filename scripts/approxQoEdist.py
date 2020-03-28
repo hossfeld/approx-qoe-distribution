@@ -242,6 +242,91 @@ def getBetaDistribution(mos, sos_parameter=0.25, low=1, high=5):
              
     a,b = getBetaParams(mos=mos, sos_parameter=sos_parameter, low=low, high=high)
     return beta(a,b, loc=low, scale=high-low)     
+
+def getPoW(mos, sos_parameter=0.25, low=1, high=5, PoW=2.5):
+    """ 
+    Returns the poor or worse ratio P(X <= PoW) of the Beta distribution X approximating the rating distribution
+    given MOS and SOS parameter on [low;high] rating scale.
+    
+    Parameters:
+        mos (float): Mean Opinion Score on the [low;high] rating scale.
+        sos_parameter (float): SOS parameter is scale independent and must be in the range [0;1].
+        low (float): Lower bound of the rating scale used for the ratings, e.g. low=1 for a 5-point scale.
+        high (float): Upper bound of the rating scale used for the ratings, e.g. high=5 for a 5-point scale.
+        PoW (float): Continuous value on the rating scale indicating poor or worse. E.g. PoW=2.5 for scale [1;5].
+                  
+    Returns:
+        float: CDF value P(X <= PoW) of the Beta distribuiton X approximation.    
+    """     
+        
+    if mos==high:
+        return 0 
+    elif mos==low:
+        return 1
+    else:        
+        return getBetaCDF(PoW, mos=mos, sos_parameter=sos_parameter, low=low, high=high)        
+    
+def getGoB(mos, sos_parameter=0.25, low=1, high=5, GoB=3.5):
+    """ 
+    Returns the good or better ratio P(X >= GoB) of the Beta distribution X approximating the rating distribution
+    given MOS and SOS parameter on [low;high] rating scale.
+    
+    Parameters:
+        mos (float): Mean Opinion Score on the [low;high] rating scale.
+        sos_parameter (float): SOS parameter is scale independent and must be in the range [0;1].
+        low (float): Lower bound of the rating scale used for the ratings, e.g. low=1 for a 5-point scale.
+        high (float): Upper bound of the rating scale used for the ratings, e.g. high=5 for a 5-point scale.
+        PoW (float): Continuous value on the rating scale indicating poor or worse. E.g. PoW=2.5 for scale [1;5].
+                  
+    Returns:
+        float: Good or better ratio P(X >= GoB) of the Beta distribuiton X approximation.    
+    """     
+        
+    if mos==high:
+        return 1 
+    elif mos==low:
+        return 0
+    else:        
+        return 1-getBetaCDF(GoB, mos=mos, sos_parameter=sos_parameter, low=low, high=high)     
+#%% get the discrete rating distribution, e.g. on a 5-point scale, based on the Beta approximation
+def getDiscreteDistributionArrays(mos, sos_parameter=0.25, low=1, high=5):
+    """ 
+    Returns the discrete distribution X approximating the rating distribution
+    given MOS and SOS parameter on a discrete rating scale from low to high.
+    
+    Parameters:
+        mos (float): Mean Opinion Score on the [low;high] rating scale.
+        sos_parameter (float): SOS parameter is scale independent and must be in the range [0;1].
+        low (float): Lower bound of the rating scale used for the ratings, e.g. low=1 for a 5-point scale.
+        high (float): Upper bound of the rating scale used for the ratings, e.g. high=5 for a 5-point scale.
+                  
+    Returns:
+        (xk, pk): Tuple of an Numpy array of discrete values xk and corresponding probabilites pk (Numpy array)
+        
+    Raises: 
+        ValueError: If SOS parameter is not in range [0;1]. If upper bound 'high' of rating scale is 
+        smaller than the lower bound 'low'. If MOS or x is not in range [low;high].
+    """ 
+    checkParameters(mos=mos, sos_parameter=sos_parameter, low=low, high=high) 
+    
+    xk = np.arange(low,high+1)    
+    
+    if mos==high:
+        pk = np.zeros(high+1-low)
+        pk[-1] = 1
+        return (xk, pk)
+    elif mos==low:
+        pk = np.zeros(high+1-low)
+        pk[0] = 1
+        return (xk, pk)
+    else:                
+        rv_cont = getBetaDistribution(mos=mos, sos_parameter=sos_parameter, low=low, high=high)        
+        
+        zk = np.arange(low-0.5,high+1.5, step=1)
+        zk[0], zk[-1] = low, high
+        bcdf = rv_cont.cdf(zk)
+        pk = np.diff(bcdf)
+        return (xk, pk)
 #%% get the discrete rating distribution, e.g. on a 5-point scale, based on the Beta approximation
 def getDiscreteDistribution(mos, sos_parameter=0.25, low=1, high=5):
     """ 
@@ -261,23 +346,5 @@ def getDiscreteDistribution(mos, sos_parameter=0.25, low=1, high=5):
         ValueError: If SOS parameter is not in range [0;1]. If upper bound 'high' of rating scale is 
         smaller than the lower bound 'low'. If MOS or x is not in range [low;high].
     """ 
-    checkParameters(mos=mos, sos_parameter=sos_parameter, low=low, high=high) 
-    
-    xk = np.arange(low,high+1)    
-    
-    if mos==high:
-        pk = np.zeros(high+1-low)
-        pk[-1] = 1
-        return rv_discrete(values=(xk, pk)) 
-    elif mos==low:
-        pk = np.zeros(high+1-low)
-        pk[0] = 1
-        return rv_discrete(values=(xk, pk)) 
-    else:                
-        rv_cont = getBetaDistribution(mos=mos, sos_parameter=sos_parameter, low=low, high=high)        
-        
-        zk = np.arange(low-0.5,high+1.5, step=1)
-        zk[0], zk[-1] = low, high
-        bcdf = rv_cont.cdf(zk)
-        pk = np.diff(bcdf)
-        return rv_discrete(values=(xk, pk)) 
+    (xk,pk) = getDiscreteDistributionArrays(mos=mos, sos_parameter=sos_parameter, low=low, high=high)
+    return rv_discrete(values=(xk, pk)) 
