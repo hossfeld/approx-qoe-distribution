@@ -23,7 +23,7 @@ import approxQoEdist as app
 
 #%% QoS measurements in the system 
 k = 100
-qos = np.abs(np.random.randn(k)*2+0.6) # here randomly generated values
+qos = np.abs(np.random.randn(k)*2+8.6) # here randomly generated values
 #%% Literature provides a MOS mapping function f
 f = lambda x: 4*np.exp(-0.25*x)+1
 plt.figure(10)
