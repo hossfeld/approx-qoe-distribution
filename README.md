@@ -19,6 +19,9 @@ The investigators in this research are
 * Lea Skorin-Kapov (lea.skorin-kapov@fer.hr), Associate professor and head of the Multimedia Quality of Experience Research Lab at the [Faculty of Electrical Engineering and Computing, University of Zagreb](https://www.fer.unizg.hr/)
 * Markus Fiedler (markus.fiedler@bth.se), Professor and responsible for the area of media technology at [Blekinge Institute of Technology](http://www.bth.se/)
 
+## Presentation of Scientific Background
+A short 15min presentation is provided for the QoE Management 2020 Workshop where the paper is presented. The presentation can be viewed as [interactive html5 presentation](https://hossfeld.github.io/approx-qoe-distribution/).
+
 ## Copyright Notice
 This tool is published under the license: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 Permission is hereby granted, without written agreement and without license or royalty fees, to use, copy, modify, and distribute this tool and its documentation for any purpose, provided that the copyright notice in its entirety appear in all copies of this tool, and the original source of this tool is acknowledged in any publication that reports research using this tool. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
